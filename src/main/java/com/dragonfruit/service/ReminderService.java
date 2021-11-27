@@ -15,4 +15,8 @@ public class ReminderService {
 	public ReminderBean getReminderBean(Long reminderId) {
 		return reminderDAO.findByReminderId(reminderId);
 	}
+	
+	public long getReminderLength() {
+		return reminderDAO.count();
+	}
 }

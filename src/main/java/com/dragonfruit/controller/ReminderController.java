@@ -20,18 +20,19 @@ public class ReminderController {
 	@Autowired
 	private ReminderService reminderService;
 	
-	@GetMapping
+	@GetMapping("/expression")
 	public ReminderBean doGet(@RequestParam Map<String,String> allParams) {
-		
-		Long reminderId=this.getReminderId(allParams);
-		System.out.println("allParams "+allParams);
-		System.out.println("reminderId "+reminderId);		
-//		return null;
+		Long reminderId=this.getReminderId(allParams);	
+
 		return reminderService.getReminderBean(reminderId);
 	}
 	
+	@GetMapping("/length")
+	public Long getReminderCount() {
+		return reminderService.getReminderLength();
+	}
+	
 	private Long getReminderId(Map<String,String> allParams) {
-		System.out.println("allParams "+allParams);
 		return StringUtils.hasText(allParams.get(ReminderConstants.ID))?
 				Long.valueOf(allParams.get(ReminderConstants.ID)):0;
 	}	
