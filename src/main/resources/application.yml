@@ -1,10 +1,5 @@
-server:
-  port : 8082
-  
 spring:  
-  datasource:
-    url: jdbc:postgresql://localhost:5432/videogamedb
-    username: postgres
-    password: password
   application:
-    name: learner-service    
+    name: learner-service  
+  config:
+    import: optional:configserver:http://localhost:8889
